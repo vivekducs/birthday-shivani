@@ -182,100 +182,69 @@ const App = () => {
         </div>
       </section>
 
-      {/* Virtual Cake Cutting */}
+      {/* Virtual Cake Cutting - Modern Update */}
       <section className="py-24 bg-white px-6 z-10 relative text-center border-y-4 border-dashed border-pink-100">
-        <h2 className="text-4xl md:text-5xl font-serif text-pink-500 mb-4">Virtual Cake Cutting 🎂</h2>
-        <p className="text-3xl font-handwritten text-pink-400 mb-12">Tap the candle</p>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-serif text-pink-500 mb-4"
+        >
+          Virtual Cake Cutting 🎂
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-3xl font-handwritten text-pink-400 mb-12"
+        >
+          Tap the glowing flame to blow it out!
+        </motion.p>
         
-        <div className="max-w-md mx-auto relative h-[450px] flex flex-col items-center justify-end pb-4">
+        <div className="max-w-md mx-auto relative flex flex-col items-center pb-4">
           
           <AnimatePresence>
             {!candleBlown && (
               <motion.div 
-                exit={{ opacity: 0, scale: 0, y: 20 }}
-                className="absolute top-8 cursor-pointer z-20 flex flex-col items-center group"
+                exit={{ opacity: 0, scale: 0, y: -20, filter: "blur(10px)" }}
+                className="absolute top-[8%] cursor-pointer z-20 flex flex-col items-center group"
                 onClick={blowCandle}
               >
-                {/* Flame */}
+                {/* Glowing Flame */}
                 <motion.div 
-                  animate={{ scale: [1, 1.1, 0.9, 1], rotate: [0, -2, 2, 0] }}
-                  transition={{ repeat: Infinity, duration: 0.3 }}
-                  className="w-8 h-12 bg-gradient-to-t from-yellow-400 to-orange-500 rounded-[50%_50%_50%_50%_/_60%_60%_40%_40%] shadow-[0_0_30px_#f59e0b] group-hover:scale-110 transition-transform"
+                  animate={{ scale: [1, 1.2, 0.9, 1.1, 1], rotate: [0, -3, 3, -1, 0] }}
+                  transition={{ repeat: Infinity, duration: 0.4 }}
+                  className="w-10 h-16 bg-gradient-to-t from-yellow-300 via-orange-400 to-red-500 rounded-[50%_50%_50%_50%_/_60%_60%_40%_40%] shadow-[0_0_50px_rgba(245,158,11,1)] group-hover:scale-125 transition-transform cursor-pointer"
                 />
-                {/* Candle Body */}
-                <div className="w-5 h-24 bg-gradient-to-r from-pink-100 via-white to-pink-200 rounded-sm border border-pink-200 mt-1 flex flex-col justify-evenly shadow-sm">
-                  <div className="w-full h-1.5 bg-pink-400 transform -rotate-12"></div>
-                  <div className="w-full h-1.5 bg-pink-400 transform -rotate-12"></div>
-                  <div className="w-full h-1.5 bg-pink-400 transform -rotate-12"></div>
-                </div>
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* Premium 2-Tier Cake */}
-          <div className="relative flex flex-col items-center z-10">
-            
-            {/* Top Tier */}
-            <div className="w-48 h-28 bg-gradient-to-b from-pink-200 to-pink-300 rounded-t-xl relative border-b-4 border-pink-400 shadow-md flex justify-center">
-              {/* Drip icing */}
-              <div className="absolute top-0 w-full flex justify-around">
-                {['h-6', 'h-8', 'h-5', 'h-9', 'h-7', 'h-6'].map((h, i) => (
-                  <div key={i} className={`w-8 bg-white rounded-b-full shadow-sm ${h}`}></div>
-                ))}
-              </div>
-              
-              <div className="absolute inset-0 flex flex-col items-center justify-center pt-6">
-                <span className="text-pink-600 font-serif font-bold text-2xl drop-shadow-sm">Happy Bdy</span>
-              </div>
-              
-              {/* Sprinkles */}
-              {[...Array(12)].map((_, i) => (
-                 <div key={`sprinkle-top-${i}`} className="absolute w-2 h-1 rounded-full opacity-80"
-                   style={{
-                     backgroundColor: ['#ffb6c1', '#e6e6fa', '#fffdd0', '#ff69b4', '#d4af37'][Math.floor(Math.random()*5)],
-                     top: Math.random() * 40 + 40 + '%',
-                     left: Math.random() * 80 + 10 + '%',
-                     transform: `rotate(${Math.random() * 180}deg)`
-                   }}
-                 />
-              ))}
-            </div>
-
-            {/* Bottom Tier */}
-            <div className="w-72 h-36 bg-gradient-to-b from-pink-300 to-pink-400 rounded-lg relative border-b-[12px] border-pink-500 shadow-2xl flex justify-center">
-              {/* Drip icing */}
-              <div className="absolute top-0 w-full flex justify-around overflow-hidden">
-                {['h-8', 'h-6', 'h-10', 'h-7', 'h-9', 'h-5', 'h-8', 'h-6'].map((h, i) => (
-                  <div key={i} className={`w-9 bg-white rounded-b-full shadow-sm ${h}`}></div>
-                ))}
-              </div>
-              
-              <div className="absolute inset-0 flex items-center justify-center pt-8">
-                <span className="text-white font-handwritten text-5xl drop-shadow-md font-bold tracking-wider">Dear Sister!</span>
-              </div>
-              
-              {/* Decorative bottom border */}
-              <div className="absolute bottom-0 w-full flex justify-around mb-[-6px]">
-                {[...Array(12)].map((_, i) => (
-                  <div key={i} className="w-5 h-5 rounded-full bg-pink-100 border-2 border-pink-400 shadow-sm"></div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Cake Plate */}
-            <div className="w-80 h-5 bg-slate-200 rounded-full mt-2 shadow-xl border-b-4 border-slate-300"></div>
-          </div>
+          {/* Modern Image Cake */}
+          <motion.div 
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 100 }}
+            className={`relative flex flex-col items-center z-10 transition-all duration-1000 ${candleBlown ? "scale-105 filter drop-shadow-2xl" : ""}`}
+          >
+            <img 
+              src="/modern_cake.png" 
+              alt="Beautiful 3D Cake" 
+              className="w-80 h-80 object-cover rounded-[3rem] shadow-[0_20px_50px_rgba(236,72,153,0.4)] border-4 border-pink-100"
+            />
+          </motion.div>
           
           <AnimatePresence>
             {candleBlown && (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.5, y: 100 }}
-                animate={{ opacity: 1, scale: 1, y: -60 }}
-                className="absolute top-0 z-30"
+                animate={{ opacity: 1, scale: 1, y: -80 }}
+                className="absolute top-0 z-30 w-full"
               >
-                <div className="p-3 bg-white rounded-2xl shadow-2xl rotate-3 border-4 border-pink-100">
-                  <img src="/shivani with cake.webp" alt="Birthday Celebration" className="w-72 h-auto rounded-xl object-contain" />
-                  <p className="font-handwritten text-pink-500 text-3xl mt-3">Yay! Time to party! 🎉🎂</p>
+                <div className="p-4 bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl rotate-2 border-4 border-pink-200 mx-4" style={{ boxShadow: '0 25px 50px -12px rgba(236, 72, 153, 0.5)' }}>
+                  <img src="/shivani with cake.webp" alt="Birthday Celebration" className="w-full h-auto rounded-2xl object-contain max-h-[300px]" />
+                  <p className="font-handwritten text-pink-600 text-4xl mt-4 font-bold">Yay! Time to party! 🎉🎂</p>
                 </div>
               </motion.div>
             )}
