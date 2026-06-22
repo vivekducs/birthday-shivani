@@ -79,10 +79,11 @@ const App = () => {
         <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-yellow-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob" style={{ animationDelay: '4s' }}></div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5 }}
-          className="z-10 text-center px-6 py-12 max-w-lg bg-white/40 backdrop-blur-md rounded-[3rem] border border-white/60 shadow-2xl relative"
+          initial={{ opacity: 0, scale: 0.8, y: 50 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ type: "spring", stiffness: 100, damping: 15 }}
+          className="z-10 text-center px-6 py-12 max-w-lg bg-white/50 backdrop-blur-2xl rounded-[3rem] border border-white/80 shadow-[0_30px_60px_-15px_rgba(236,72,153,0.3)] relative"
+          style={{ animation: 'float 6s ease-in-out infinite' }}
         >
           <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white rounded-full p-4 shadow-xl border-4 border-pink-100">
             <Gift size={40} className="text-pink-500 animate-bounce" />
@@ -482,22 +483,24 @@ const App = () => {
 const MemoryCard = ({ img, date, desc, align }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8 }}
-      className={`flex flex-col ${align === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 lg:gap-16 items-center`}
+      initial={{ opacity: 0, y: 80, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      whileHover={{ y: -5, rotate: align === 'right' ? 1 : -1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      className={`flex flex-col ${align === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'} items-center bg-white/70 backdrop-blur-xl p-6 md:p-8 rounded-[2.5rem] shadow-xl border border-white overflow-hidden gap-8 lg:gap-16`}
     >
       <div className="w-full md:w-1/2 flex justify-center">
-        <div className="relative group p-3 bg-white rounded-2xl rotate-1 hover:rotate-0 transition-transform duration-500 shadow-xl border border-pink-100 max-w-md w-full">
-          {/* Changed object-cover to object-contain and removed strict height limit to prevent cropping */}
-          <img src={img} alt="Memory" className="w-full h-auto max-h-[600px] object-contain rounded-xl" />
-          <div className="absolute inset-0 bg-pink-200/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+        <div className="relative group p-2 bg-white rounded-3xl shadow-lg border border-pink-50 max-w-md w-full">
+          <img src={img} alt="Memory" className="w-full h-auto max-h-[500px] object-cover rounded-2xl" />
+          <div className="absolute inset-0 bg-pink-300/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
         </div>
       </div>
-      <div className={`w-full md:w-1/2 ${align === 'right' ? 'md:text-right' : 'text-left'}`}>
-        <span className="inline-block px-6 py-2 bg-pink-100 text-pink-600 font-serif text-lg italic mb-4 rounded-full font-medium shadow-sm">{date}</span>
-        <p className="text-xl md:text-3xl text-slate-700 font-serif leading-relaxed">{desc}</p>
+      <div className={`w-full md:w-1/2 md:px-10 ${align === 'right' ? 'md:text-right' : 'text-left'} flex flex-col justify-center`}>
+        <div className={`inline-block mb-4 ${align === 'right' ? 'md:ml-auto' : ''}`}>
+           <span className="px-5 py-2 bg-pink-100/80 backdrop-blur-sm text-pink-600 font-serif text-lg italic rounded-full font-medium shadow-sm inline-block">{date}</span>
+        </div>
+        <p className="text-2xl md:text-4xl text-slate-700 font-serif leading-tight">{desc}</p>
       </div>
     </motion.div>
   );
@@ -506,13 +509,15 @@ const MemoryCard = ({ img, date, desc, align }) => {
 const QualityCard = ({ title, icon }) => {
   return (
     <motion.div
-      whileHover={{ y: -10, scale: 1.02 }}
-      className="bg-white p-8 rounded-3xl flex flex-col items-center justify-center text-center gap-4 cursor-pointer shadow-lg border border-pink-50 hover:shadow-pink-200/50 transition-all duration-300"
+      whileHover={{ y: -15, scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 300 }}
+      className="bg-white/80 backdrop-blur-md p-8 rounded-[2.5rem] flex flex-col items-center justify-center text-center gap-4 cursor-pointer shadow-xl border border-white hover:shadow-2xl hover:shadow-pink-200/50 transition-all duration-300"
     >
-      <div className="p-4 bg-pink-50 rounded-full shadow-inner">
+      <div className="p-5 bg-gradient-to-br from-pink-50 to-pink-100 rounded-full shadow-inner border border-white">
         {icon}
       </div>
-      <h3 className="text-xl font-serif text-slate-700">{title}</h3>
+      <h3 className="text-2xl font-serif text-slate-700 font-medium">{title}</h3>
     </motion.div>
   );
 };
