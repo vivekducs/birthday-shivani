@@ -99,7 +99,7 @@ const App = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleStart}
-            className="px-8 py-4 bg-pink-500 border border-pink-400 rounded-full text-white font-bold tracking-widest uppercase text-sm flex items-center justify-center gap-3 mx-auto shadow-[0_10px_25px_rgba(236,72,153,0.5)] hover:bg-pink-600 transition-all"
+            className="px-10 py-5 bg-pink-500 border border-pink-400 rounded-full text-white font-bold text-lg tracking-wide flex items-center justify-center gap-3 mx-auto shadow-[0_10px_25px_rgba(236,72,153,0.5)] hover:bg-pink-600 transition-all"
           >
             <Sparkles size={18} className="text-pink-100" />
             See your surprise! 🎁
@@ -175,7 +175,7 @@ const App = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
-            className="text-sm md:text-lg text-pink-900 tracking-widest font-bold uppercase bg-white/60 inline-block px-6 py-3 rounded-full backdrop-blur-md border border-white/80 shadow-lg"
+            className="text-lg md:text-xl text-pink-900 font-serif italic bg-white/60 inline-block px-8 py-3 rounded-full backdrop-blur-md border border-white/80 shadow-lg"
           >
             A digital surprise from your loving brother
           </motion.p>
@@ -324,7 +324,7 @@ const App = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setShowSurprise(true)}
-          className="px-8 py-4 bg-pink-100 border-2 border-pink-300 rounded-full text-pink-500 uppercase tracking-widest font-bold shadow-[0_0_20px_rgba(255,192,203,0.5)] hover:bg-pink-200 transition-colors"
+          className="px-10 py-4 bg-pink-100 border-2 border-pink-300 rounded-full text-pink-500 text-lg font-bold tracking-wide shadow-[0_0_20px_rgba(255,192,203,0.5)] hover:bg-pink-200 transition-colors"
         >
           Do Not Click
         </motion.button>
@@ -353,7 +353,7 @@ const App = () => {
       <section className="py-24 px-6 relative overflow-hidden z-10">
         <div className="absolute inset-0 bg-pink-100/50"></div>
         <div className="max-w-2xl mx-auto relative z-10 bg-white/80 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-xl border border-pink-100 flex flex-col items-center text-center min-h-[400px] justify-center">
-          <h3 className="text-pink-400 uppercase tracking-widest font-bold text-sm mb-6">A message for you</h3>
+          <h3 className="text-pink-500 font-serif text-2xl italic mb-6">A message for you</h3>
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -374,13 +374,13 @@ const App = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleNextMsg}
-            className="px-10 py-4 bg-pink-500 border border-pink-400 rounded-full text-white font-bold tracking-widest uppercase text-sm shadow-[0_4px_15px_rgba(236,72,153,0.4)] hover:bg-pink-600 transition-all mt-4"
+            className="px-12 py-4 bg-pink-500 border border-pink-400 rounded-full text-white font-bold text-lg tracking-wide shadow-[0_4px_15px_rgba(236,72,153,0.4)] hover:bg-pink-600 transition-all mt-4"
           >
             Thanks
           </motion.button>
 
           <div className="w-full mt-8 border-t border-pink-200 pt-6">
-            <p className="text-right text-pink-600 font-bold tracking-widest uppercase text-sm">Your brother, Ashish</p>
+            <p className="text-right text-pink-600 font-handwritten text-4xl font-bold">Your brother, Ashish</p>
           </div>
         </div>
       </section>
@@ -433,7 +433,7 @@ const App = () => {
         <h2 className="font-handwritten text-4xl md:text-6xl text-[#d4af37] mb-2 drop-shadow-md">
           Designed with love <span className="text-pink-500">❤️</span> by Ashish
         </h2>
-        <p className="text-xs md:text-sm tracking-widest uppercase text-white/50 mb-10">
+        <p className="text-sm md:text-base font-serif italic text-white/60 mb-10">
           Made specifically for Shivani's birthday
         </p>
 
@@ -467,7 +467,7 @@ const App = () => {
 
         <div className="flex flex-col items-center gap-2">
           <p className="text-white/80 text-sm">
-            Designed and developed with 💖 by <a href="https://vivekducs.is-a.dev/" target="_blank" rel="noopener noreferrer" className="text-pink-300 hover:text-pink-100 underline decoration-pink-400/50 underline-offset-4 transition-colors font-medium">vivekducs.is-a.dev</a>
+            Designed and developed with 💖 by <a href="https://vivekducs.is-a.dev/" target="_blank" rel="noopener noreferrer" className="text-pink-300 hover:text-pink-100 underline decoration-pink-400/50 underline-offset-4 transition-colors font-medium">Vivek Pal</a>
           </p>
           <p className="text-white/40 text-xs">
             © 2026 Ashish. All rights reserved.
@@ -496,7 +496,7 @@ const MemoryCard = ({ img, date, desc, align }) => {
         </div>
       </div>
       <div className={`w-full md:w-1/2 ${align === 'right' ? 'md:text-right' : 'text-left'}`}>
-        <span className="inline-block px-4 py-1 bg-pink-100 text-pink-600 font-mono text-sm tracking-widest uppercase mb-4 rounded-full font-bold">{date}</span>
+        <span className="inline-block px-6 py-2 bg-pink-100 text-pink-600 font-serif text-lg italic mb-4 rounded-full font-medium shadow-sm">{date}</span>
         <p className="text-xl md:text-3xl text-slate-700 font-serif leading-relaxed">{desc}</p>
       </div>
     </motion.div>
