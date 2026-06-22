@@ -177,7 +177,7 @@ const App = () => {
             transition={{ duration: 1, delay: 1.5 }}
             className="text-sm md:text-lg text-pink-900 tracking-widest font-bold uppercase bg-white/60 inline-block px-6 py-3 rounded-full backdrop-blur-md border border-white/80 shadow-lg"
           >
-            A digital surprise from your annoying but loving brother
+            A digital surprise from your loving brother
           </motion.p>
         </div>
       </section>
@@ -299,16 +299,22 @@ const App = () => {
             align="left"
           />
           <MemoryCard 
+            img="/doctor.webp"
+            date="Future Dr. Shivani 🩺"
+            desc="So proud of you for pursuing BAMS! You are going to be an amazing doctor, healing lives with your kindness."
+            align="right"
+          />
+          <MemoryCard 
             img="/in nature.webp"
             date="Adventures Together"
             desc="Exploring the world and making memories."
-            align="right"
+            align="left"
           />
           <MemoryCard 
             img="/with friends.webp"
             date="Always Smiling"
             desc="Your happiness is truly contagious. Never lose that smile."
-            align="left"
+            align="right"
           />
         </div>
       </section>
