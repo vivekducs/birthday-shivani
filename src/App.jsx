@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Play, Pause, Heart, Star, Sparkles, Volume2, VolumeX, MessageCircle, Gift, Wind, Instagram } from 'lucide-react';
+import { Play, Pause, Heart, Star, Sparkles, Volume2, VolumeX, MessageCircle, Gift, Wind } from 'lucide-react';
+import { FaInstagram } from 'react-icons/fa';
 import Confetti from 'react-confetti';
 
 const App = () => {
@@ -14,6 +15,9 @@ const App = () => {
     "I still miss your chocolate coffee ☕",
     "I miss our late-night discussions 🌙",
     "You are the best sister anyone could ask for ❤️",
+    "I'll never forget how much fun we had playing Ludo and Uno together 🎲",
+    "We always enjoy so much when we watch movies together 🎬",
+    "No one can beat the special coffee and pasta you make for me! 🍝😋",
     "Thanks for always having my back, no matter what 🛡️",
     "Can't wait to create more beautiful memories together ✨",
     "You light up our home with your smile 🌸",
@@ -68,16 +72,29 @@ const App = () => {
 
   if (!started) {
     return (
-      <div className="h-screen w-full bg-pink-50 flex flex-col items-center justify-center relative overflow-hidden">
+      <div className="h-screen w-full bg-gradient-to-br from-pink-100 via-pink-50 to-pink-200 flex flex-col items-center justify-center relative overflow-hidden">
+        {/* Decorative glowing background blobs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-pink-300/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-300/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-1/4 left-1/2 w-96 h-96 bg-yellow-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-blob" style={{animationDelay: '4s'}}></div>
+
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5 }}
-          className="z-10 text-center px-4"
+          className="z-10 text-center px-6 py-12 max-w-lg bg-white/40 backdrop-blur-md rounded-[3rem] border border-white/60 shadow-2xl relative"
         >
-          <h1 className="text-pink-700 font-handwritten text-5xl md:text-7xl mb-8 leading-tight font-bold drop-shadow-sm">
-            For the most special sister<br />in the world...
+          <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white rounded-full p-4 shadow-xl border-4 border-pink-100">
+            <Gift size={40} className="text-pink-500 animate-bounce" />
+          </div>
+
+          <h1 className="text-pink-700 font-handwritten text-5xl md:text-6xl mb-4 leading-tight font-bold drop-shadow-sm mt-6">
+            For the most special sister in the world...
           </h1>
+          <p className="text-pink-600/80 font-serif text-lg mb-8 italic">
+            "Turn up your volume and open your gift 🎧💖"
+          </p>
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -85,31 +102,31 @@ const App = () => {
             className="px-8 py-4 bg-pink-500 border border-pink-400 rounded-full text-white font-bold tracking-widest uppercase text-sm flex items-center justify-center gap-3 mx-auto shadow-[0_10px_25px_rgba(236,72,153,0.5)] hover:bg-pink-600 transition-all"
           >
             <Sparkles size={18} className="text-pink-100" />
-            Enter Experience
+            See your surprise! 🎁
           </motion.button>
         </motion.div>
         
         {/* Floating flowers and hearts */}
-        {[...Array(15)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute text-pink-300 opacity-60 text-2xl"
+            className="absolute text-pink-300 opacity-70 text-3xl"
             style={{
               left: Math.random() * 100 + '%',
               top: Math.random() * 100 + '%',
             }}
             animate={{
-              y: [0, -40, 0],
-              x: [0, Math.random() * 20 - 10, 0],
-              rotate: [0, 10, -10, 0]
+              y: [0, -60, 0],
+              x: [0, Math.random() * 30 - 15, 0],
+              rotate: [0, 20, -20, 0]
             }}
             transition={{
-              duration: Math.random() * 4 + 3,
+              duration: Math.random() * 5 + 4,
               repeat: Infinity,
               ease: "easeInOut",
             }}
           >
-            {i % 2 === 0 ? '🌸' : '💖'}
+            {['🌸', '💖', '✨', '🎂'][i % 4]}
           </motion.div>
         ))}
       </div>
@@ -160,7 +177,7 @@ const App = () => {
             transition={{ duration: 1, delay: 1.5 }}
             className="text-sm md:text-lg text-pink-900 tracking-widest font-bold uppercase bg-white/60 inline-block px-6 py-3 rounded-full backdrop-blur-md border border-white/80 shadow-lg"
           >
-            A digital memory book made with love
+            A digital surprise from your annoying but loving brother
           </motion.p>
         </div>
       </section>
@@ -170,13 +187,13 @@ const App = () => {
         <h2 className="text-4xl md:text-5xl font-serif text-pink-500 mb-4">Virtual Cake Cutting 🎂</h2>
         <p className="text-3xl font-handwritten text-pink-400 mb-12">Tap the candle</p>
         
-        <div className="max-w-md mx-auto relative h-[400px] flex flex-col items-center justify-end pb-2">
+        <div className="max-w-md mx-auto relative h-[450px] flex flex-col items-center justify-end pb-4">
           
           <AnimatePresence>
             {!candleBlown && (
               <motion.div 
                 exit={{ opacity: 0, scale: 0, y: 20 }}
-                className="absolute top-16 cursor-pointer z-20 flex flex-col items-center group"
+                className="absolute top-8 cursor-pointer z-20 flex flex-col items-center group"
                 onClick={blowCandle}
               >
                 {/* Flame */}
@@ -186,7 +203,7 @@ const App = () => {
                   className="w-8 h-12 bg-gradient-to-t from-yellow-400 to-orange-500 rounded-[50%_50%_50%_50%_/_60%_60%_40%_40%] shadow-[0_0_30px_#f59e0b] group-hover:scale-110 transition-transform"
                 />
                 {/* Candle Body */}
-                <div className="w-5 h-24 bg-gradient-to-r from-pink-100 via-white to-pink-200 rounded-sm border border-pink-200 mt-1 flex flex-col justify-evenly">
+                <div className="w-5 h-24 bg-gradient-to-r from-pink-100 via-white to-pink-200 rounded-sm border border-pink-200 mt-1 flex flex-col justify-evenly shadow-sm">
                   <div className="w-full h-1.5 bg-pink-400 transform -rotate-12"></div>
                   <div className="w-full h-1.5 bg-pink-400 transform -rotate-12"></div>
                   <div className="w-full h-1.5 bg-pink-400 transform -rotate-12"></div>
@@ -195,27 +212,58 @@ const App = () => {
             )}
           </AnimatePresence>
 
-          {/* Cake Base */}
-          <div className="w-72 h-40 bg-pink-200 rounded-xl relative border-b-[12px] border-pink-300 shadow-xl z-10">
-            <div className="absolute top-0 w-full h-8 bg-white rounded-t-xl overflow-hidden flex">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="flex-1 h-10 bg-white rounded-b-full shadow-sm"></div>
+          {/* Premium 2-Tier Cake */}
+          <div className="relative flex flex-col items-center z-10">
+            
+            {/* Top Tier */}
+            <div className="w-48 h-28 bg-gradient-to-b from-pink-200 to-pink-300 rounded-t-xl relative border-b-4 border-pink-400 shadow-md flex justify-center">
+              {/* Drip icing */}
+              <div className="absolute top-0 w-full flex justify-around">
+                {['h-6', 'h-8', 'h-5', 'h-9', 'h-7', 'h-6'].map((h, i) => (
+                  <div key={i} className={`w-8 bg-white rounded-b-full shadow-sm ${h}`}></div>
+                ))}
+              </div>
+              
+              <div className="absolute inset-0 flex flex-col items-center justify-center pt-6">
+                <span className="text-pink-600 font-serif font-bold text-2xl drop-shadow-sm">Happy Bdy</span>
+              </div>
+              
+              {/* Sprinkles */}
+              {[...Array(12)].map((_, i) => (
+                 <div key={`sprinkle-top-${i}`} className="absolute w-2 h-1 rounded-full opacity-80"
+                   style={{
+                     backgroundColor: ['#ffb6c1', '#e6e6fa', '#fffdd0', '#ff69b4', '#d4af37'][Math.floor(Math.random()*5)],
+                     top: Math.random() * 40 + 40 + '%',
+                     left: Math.random() * 80 + 10 + '%',
+                     transform: `rotate(${Math.random() * 180}deg)`
+                   }}
+                 />
               ))}
             </div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-pink-600 font-serif font-bold text-2xl w-full text-center drop-shadow-sm">
-              Happy Birthday!
+
+            {/* Bottom Tier */}
+            <div className="w-72 h-36 bg-gradient-to-b from-pink-300 to-pink-400 rounded-lg relative border-b-[12px] border-pink-500 shadow-2xl flex justify-center">
+              {/* Drip icing */}
+              <div className="absolute top-0 w-full flex justify-around overflow-hidden">
+                {['h-8', 'h-6', 'h-10', 'h-7', 'h-9', 'h-5', 'h-8', 'h-6'].map((h, i) => (
+                  <div key={i} className={`w-9 bg-white rounded-b-full shadow-sm ${h}`}></div>
+                ))}
+              </div>
+              
+              <div className="absolute inset-0 flex items-center justify-center pt-8">
+                <span className="text-white font-handwritten text-5xl drop-shadow-md font-bold tracking-wider">Dear Sister!</span>
+              </div>
+              
+              {/* Decorative bottom border */}
+              <div className="absolute bottom-0 w-full flex justify-around mb-[-6px]">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="w-5 h-5 rounded-full bg-pink-100 border-2 border-pink-400 shadow-sm"></div>
+                ))}
+              </div>
             </div>
-            {/* Sprinkles */}
-            {[...Array(25)].map((_, i) => (
-              <div key={i} className="absolute w-3 h-1.5 rounded-full opacity-80"
-                style={{
-                  backgroundColor: ['#ffb6c1', '#e6e6fa', '#fffdd0', '#ff69b4', '#d4af37'][Math.floor(Math.random()*5)],
-                  top: Math.random() * 70 + 20 + '%',
-                  left: Math.random() * 90 + 5 + '%',
-                  transform: `rotate(${Math.random() * 180}deg)`
-                }}
-              />
-            ))}
+            
+            {/* Cake Plate */}
+            <div className="w-80 h-5 bg-slate-200 rounded-full mt-2 shadow-xl border-b-4 border-slate-300"></div>
           </div>
           
           <AnimatePresence>
@@ -344,7 +392,7 @@ const App = () => {
           </motion.button>
           
           <div className="w-full mt-8 border-t border-pink-200 pt-6">
-             <p className="text-right text-pink-600 font-bold tracking-widest uppercase text-sm">— Ashish</p>
+             <p className="text-right text-pink-600 font-bold tracking-widest uppercase text-sm">Your brother, Ashish</p>
           </div>
         </div>
       </section>
@@ -417,7 +465,7 @@ const App = () => {
             rel="noopener noreferrer"
             className="bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform"
           >
-            <Instagram size={20} /> Ashish
+            <FaInstagram size={20} /> Ashish
           </a>
           <a 
             href="https://www.instagram.com/shivani._.pal/" 
@@ -425,7 +473,7 @@ const App = () => {
             rel="noopener noreferrer"
             className="bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] text-white px-8 py-3 rounded-full font-bold flex items-center gap-2 shadow-lg hover:scale-105 transition-transform"
           >
-            <Instagram size={20} /> Shivani
+            <FaInstagram size={20} /> Shivani
           </a>
         </div>
 
