@@ -198,23 +198,25 @@ const App = () => {
           viewport={{ once: true }}
           className="text-3xl font-handwritten text-pink-400 mb-12"
         >
-          Tap the glowing flame to blow it out!
+          Tap anywhere on the cake to cut it!
         </motion.p>
         
-        <div className="max-w-md mx-auto relative flex flex-col items-center pb-4">
+        <div 
+          className="max-w-md mx-auto relative flex flex-col items-center pb-4 cursor-pointer group"
+          onClick={blowCandle}
+        >
           
           <AnimatePresence>
             {!candleBlown && (
               <motion.div 
                 exit={{ opacity: 0, scale: 0, y: -20, filter: "blur(10px)" }}
-                className="absolute top-[8%] cursor-pointer z-20 flex flex-col items-center group"
-                onClick={blowCandle}
+                className="absolute top-[8%] z-20 flex flex-col items-center pointer-events-none"
               >
                 {/* Glowing Flame */}
                 <motion.div 
                   animate={{ scale: [1, 1.2, 0.9, 1.1, 1], rotate: [0, -3, 3, -1, 0] }}
                   transition={{ repeat: Infinity, duration: 0.4 }}
-                  className="w-10 h-16 bg-gradient-to-t from-yellow-300 via-orange-400 to-red-500 rounded-[50%_50%_50%_50%_/_60%_60%_40%_40%] shadow-[0_0_50px_rgba(245,158,11,1)] group-hover:scale-125 transition-transform cursor-pointer"
+                  className="w-10 h-16 bg-gradient-to-t from-yellow-300 via-orange-400 to-red-500 rounded-[50%_50%_50%_50%_/_60%_60%_40%_40%] shadow-[0_0_50px_rgba(245,158,11,1)] group-hover:scale-125 transition-transform"
                 />
               </motion.div>
             )}
@@ -234,13 +236,24 @@ const App = () => {
               className="w-80 h-80 object-cover rounded-[3rem] shadow-[0_20px_50px_rgba(236,72,153,0.4)] border-4 border-pink-100"
             />
           </motion.div>
+
+          {/* Animated Knife */}
+          <motion.div
+            initial={{ x: 80, y: -30, rotate: 45, opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            animate={candleBlown ? { x: -30, y: 150, rotate: -20, opacity: 0 } : {}}
+            transition={candleBlown ? { duration: 0.8, ease: "easeIn" } : { duration: 1 }}
+            className="absolute top-[35%] -right-[5%] z-30 pointer-events-none"
+          >
+            <div className="text-[5rem] filter drop-shadow-2xl group-hover:rotate-12 transition-transform duration-300 origin-bottom-right">🔪</div>
+          </motion.div>
           
           <AnimatePresence>
             {candleBlown && (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.5, y: 100 }}
                 animate={{ opacity: 1, scale: 1, y: -80 }}
-                className="absolute top-0 z-30 w-full"
+                className="absolute top-0 z-40 w-full"
               >
                 <div className="p-4 bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl rotate-2 border-4 border-pink-200 mx-4" style={{ boxShadow: '0 25px 50px -12px rgba(236, 72, 153, 0.5)' }}>
                   <img src="/shivani with cake.webp" alt="Birthday Celebration" className="w-full h-auto rounded-2xl object-contain max-h-[300px]" />
