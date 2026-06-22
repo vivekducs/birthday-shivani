@@ -157,7 +157,7 @@ const App = () => {
       {/* 2. Hero Section */}
       <section className="relative h-[100svh] flex flex-col justify-end pb-16 items-center overflow-hidden z-10">
         <div className="absolute inset-0 z-0 bg-pink-50">
-          <img src="/main banner.png" alt="Shivani" className="w-full h-full object-cover" />
+          <img src="/main banner.webp" alt="Shivani" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-pink-50 via-pink-50/50 to-transparent"></div>
         </div>
         
@@ -274,7 +274,7 @@ const App = () => {
                 className="absolute top-0 z-30"
               >
                 <div className="p-3 bg-white rounded-2xl shadow-2xl rotate-3 border-4 border-pink-100">
-                  <img src="/shivani with cake.png" alt="Birthday Celebration" className="w-72 h-auto rounded-xl object-contain" />
+                  <img src="/shivani with cake.webp" alt="Birthday Celebration" className="w-72 h-auto rounded-xl object-contain" />
                   <p className="font-handwritten text-pink-500 text-3xl mt-3">Yay! Time to party! 🎉🎂</p>
                 </div>
               </motion.div>
@@ -293,19 +293,19 @@ const App = () => {
 
         <div className="space-y-32">
           <MemoryCard 
-            img="/shivani1.png"
+            img="/shivani1.webp"
             date="A Special Day"
             desc="You've always brought so much light and joy into our lives."
             align="left"
           />
           <MemoryCard 
-            img="/in nature.jpeg"
+            img="/in nature.webp"
             date="Adventures Together"
             desc="Exploring the world and making memories."
             align="right"
           />
           <MemoryCard 
-            img="/with friends.png"
+            img="/with friends.webp"
             date="Always Smiling"
             desc="Your happiness is truly contagious. Never lose that smile."
             align="left"
@@ -351,7 +351,7 @@ const App = () => {
               onClick={() => setShowSurprise(false)}
             >
               <div className="bg-white p-4 rounded-xl rotate-[-2deg] max-w-md w-full border-8 border-pink-100 shadow-2xl relative">
-                <img src="/cutee.png" alt="Cute" className="w-full h-auto rounded object-contain max-h-[60vh]" />
+                <img src="/cutee.webp" alt="Cute" className="w-full h-auto rounded object-contain max-h-[60vh]" />
                 <p className="font-handwritten text-pink-600 text-3xl mt-4 text-center">Haha! Still the cutest!</p>
                 <div className="absolute -top-4 -right-4 text-4xl animate-bounce">🌸</div>
                 <div className="absolute -bottom-4 -left-4 text-4xl animate-bounce" style={{animationDelay: '0.2s'}}>💖</div>
