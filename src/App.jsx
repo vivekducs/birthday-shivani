@@ -445,7 +445,7 @@ const App = () => {
         </p>
 
         <a
-          href="https://wa.me/919354368207?text=Thank%20you%20bhaiji"
+          href="https://wa.me/919354368207?text=Thank%20you%20bhaijiii%20%F0%9F%92%97%F0%9F%92%97%E2%9C%A8%E2%9C%A8%E2%9C%A8"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-lg flex items-center gap-3 mb-6 shadow-lg hover:scale-105 transition-transform"
