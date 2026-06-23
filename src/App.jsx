@@ -27,6 +27,12 @@ const App = () => {
 
   const handleNextMsg = () => {
     setMsgIndex((prev) => (prev + 1) % personalizedMsgs.length);
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'check_wish', {
+        'event_category': 'engagement',
+        'event_label': 'Read Next Wish'
+      });
+    }
   };
 
   const bgMusicRef = useRef(new Audio('/mixkit-hip-hop-02-738.mp3'));
